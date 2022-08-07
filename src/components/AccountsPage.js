@@ -1,11 +1,15 @@
-import {Container} from "@mui/material";
+import {Container, Box} from "@mui/material";
 
 
 export const AccountsPage = () => {
 
     return (
         <Container>
-            <h2>Accounts</h2>
+            <Box>
+                <h2>Accounts</h2>
+
+            </Box>
+
         </Container>
     );
 }

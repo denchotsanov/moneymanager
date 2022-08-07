@@ -3,12 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {RegisterPage} from "./login/RegisterPage";
+import {LoginPage} from "./login/LoginPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <App />
+        <Routes>
+            <Route path="/login" element={<LoginPage/>}/>
+            <Route path="/registration" element={<RegisterPage/>}/>
+            <Route path="*" element={<App/>}/>
+        </Routes>
     </BrowserRouter>
 );
 
