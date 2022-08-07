@@ -3,10 +3,11 @@ import classes from "./LoginLayout.module.css";
 import {Button, IconButton, TextField, Typography} from "@mui/material";
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 
 export const RegisterPage = () => {
-
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -22,7 +23,9 @@ export const RegisterPage = () => {
         <LoginLayout>
             <div className={classes.container}>
                 <div className={classes.header}>
-                    <IconButton color="primary">
+                    <IconButton color="primary" onClick={()=> {
+                        navigate(`/login`);
+                    }}>
                         <ArrowBackIcon />
                     </IconButton>
                     <Typography className={classes.title} color="primary">
