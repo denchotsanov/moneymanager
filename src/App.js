@@ -3,7 +3,8 @@ import {Header} from "./components/Header";
 import {SlideMenu} from "./components/SlideMenu";
 import {Footer} from "./components/Footer";
 import {useState} from "react";
-import {Navigation} from "./Navigation";
+import { Outlet } from 'react-router-dom';
+import {PageLayout} from "./components/PageLayout";
 
 
 function App() {
@@ -18,12 +19,12 @@ function App() {
     };
 
     return (
-        <>
+        <PageLayout>
             <Header handleDrawerOpen={handleDrawerOpen}/>
             <SlideMenu open={open} handleDrawerClose={handleDrawerClose}/>
-            <Navigation/>
+            <Outlet />
             <Footer/>
-        </>
+        </PageLayout>
     );
 }
 

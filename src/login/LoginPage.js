@@ -1,21 +1,35 @@
-import {useState} from "react";
-import {LoginLayout} from "./LoginLayout";
+import {useContext, useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../contexts/AuthContext";
+import * as authService from "../services/authService";
+
 import {Button, TextField} from "@mui/material";
 
+import {LoginLayout} from "./LoginLayout";
 import styles from './LoginLayout.module.css';
+
 
 
 export const LoginPage = () => {
     const [failed, setFailed] = useState(false);
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('');
+    const { userLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-            setFailed(true);
-            setPassword('');
-            setEmail('');
-            setFailed(false);
+        console.log(email,password);
+        authService.login(email, password)
+            .then(authData => {
+                userLogin(authData);
+                navigate('/');
+            })
+            .catch(() => {
+                setFailed(true);
+                setPassword('');
+                navigate('/login');
+            });
     };
 
     const handleSpecialKey = (e) => {
