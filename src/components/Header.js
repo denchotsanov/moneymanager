@@ -12,12 +12,13 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import {Link} from "react-router-dom";
 
 export const Header = ({handleDrawerOpen}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-    const profileMenu = [{'name':'Profile','src':''},{'name':'Logout','src':''}];
+    const profileMenu = [{'name':'Profile','src':''},{'name':'Logout','src':'/logout'}];
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -57,9 +58,11 @@ export const Header = ({handleDrawerOpen}) => {
             onClose={handleMenuClose}
         >
             { profileMenu.map((obejct) => (
-                <MenuItem key={obejct.name}>
-                    <Typography textAlign="center">{obejct.name}</Typography>
-                </MenuItem>
+                <Link to={obejct.src}>
+                    <MenuItem key={obejct.name}>
+                        <Typography textAlign="center">{obejct.name}</Typography>
+                    </MenuItem>
+                </Link>
             ))}
         </Menu>
     );

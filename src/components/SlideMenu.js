@@ -54,6 +54,16 @@ export const SlideMenu = ({
                         </ListItemButton>
                     </ListItem>
                 </Link>
+                <Link to="/transaction">
+                    <ListItem disablePadding>
+                        <ListItemButton>
+                            <ListItemIcon>
+                                <AccountBalanceRoundedIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary="Transaction"/>
+                        </ListItemButton>
+                    </ListItem>
+                </Link >
                 <Link to="/accounts">
                     <ListItem disablePadding>
                         <ListItemButton>
