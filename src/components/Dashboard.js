@@ -1,35 +1,17 @@
-import {Container, SpeedDial, SpeedDialAction} from "@mui/material";
-import SpeedDialIcon from '@mui/material/SpeedDialIcon';
-import FileCopyIcon from '@mui/icons-material/FileCopyOutlined';
-import SaveIcon from '@mui/icons-material/Save';
-import PrintIcon from '@mui/icons-material/Print';
-import ShareIcon from '@mui/icons-material/Share';
+import {Container} from "@mui/material";
+import {useAuthContext} from "../contexts/AuthContext";
+import Box from "@mui/material/Box";
 
-const actions = [
-    { icon: <FileCopyIcon />, name: 'Copy' },
-    { icon: <SaveIcon />, name: 'Save' },
-    { icon: <PrintIcon />, name: 'Print' },
-    { icon: <ShareIcon />, name: 'Share' },
-];
 
 export const Dashboard = () => {
+    const { user } = useAuthContext();
 
     return (
         <Container>
-
-            <SpeedDial
-                ariaLabel="SpeedDial basic example"
-                sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                icon={<SpeedDialIcon />}
-            >
-                {actions.map((action) => (
-                    <SpeedDialAction
-                        key={action.name}
-                        icon={action.icon}
-                        tooltipTitle={action.name}
-                    />
-                ))}
-            </SpeedDial>
+            <Box>
+                <h2>Wellcome {user.email && <span>{user.email}</span>},</h2>
+                <p>click left button to open menu to navigate.</p>
+            </Box>
         </Container>
     );
 }

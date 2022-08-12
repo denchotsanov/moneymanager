@@ -3,6 +3,7 @@ import {Dashboard} from "./components/Dashboard"
 import {AccountsPage} from "./components/AccountsPage";
 import {LoginPage} from "./login/LoginPage";
 import {RegisterPage} from "./login/RegisterPage";
+import {TransactionPage} from "./components/TransactionPage";
 
 import {AuthProvider} from './contexts/AuthContext';
 
@@ -23,7 +24,7 @@ export const Navigation = () => {
                 <Route path="/" element={
                     <PrivateRoute><App /></PrivateRoute>} >
                     <Route index element={<Dashboard />}/>
-                    <Route path="/transaction" element={<AccountsPage />}/>
+                    <Route path="/transaction" element={<TransactionPage />}/>
                     <Route path="/accounts" element={<AccountsPage />}/>
                 </Route>
             </Routes>

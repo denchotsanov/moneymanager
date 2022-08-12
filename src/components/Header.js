@@ -18,7 +18,7 @@ export const Header = ({handleDrawerOpen}) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
-    const profileMenu = [{'name':'Profile','src':''},{'name':'Logout','src':'/logout'}];
+    const profileMenu = [{'name':'Logout','src':'/logout'}];
 
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
