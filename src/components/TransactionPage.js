@@ -1,7 +1,7 @@
 import { DataGrid } from '@mui/x-data-grid';
 import Box from "@mui/material/Box";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
-import {SpeedDial, SpeedDialAction} from "@mui/material";
+import { SpeedDial, SpeedDialAction} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import * as transactionsService from "../services/transactionService";
 import {useEffect, useState} from "react";
@@ -10,9 +10,9 @@ import {useEffect, useState} from "react";
 export const TransactionPage = () => {
     const [transactions, setTransactions] = useState({});
     const columns = [
-        { field: 'id', headerName: 'ID', width: 90 },
+        { field: '_Id', headerName: 'ID', width: 90 },
         {
-            field: 'transactionDate',
+            field: 'date',
             headerName: 'Date',
             width: 150,
             editable: true,
@@ -44,10 +44,10 @@ export const TransactionPage = () => {
 
     useEffect(() => {
         transactionsService.getAll()
-            .then(users => setTransactions(users));
+            .then(transactions => setTransactions(transactions));
     }, []);
     return (
-        <container>
+        <>
             <Box sx={{ height: 700, width: '100%', paddingBottom:25}}>
                 <DataGrid columns={columns} rows={transactions} />
             </Box>
@@ -64,6 +64,6 @@ export const TransactionPage = () => {
                     />
                 ))}
             </SpeedDial>
-        </container>
+        </>
     );
 }

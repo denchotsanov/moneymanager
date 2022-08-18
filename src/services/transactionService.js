@@ -1,12 +1,12 @@
 import * as request from "./requester";
-const baseUrl = 'http://localhost:3030/data/transactions';
+const baseUrl = 'http://localhost:3030/jsonstore/transactions';
 
 export const getAll = () => request.get(baseUrl);
 
-export const getOne = (gameId) => request.get(`${baseUrl}/${gameId}`);
+export const getOne = (id) => request.get(`${baseUrl}/${id}`);
 
-export const create = (gameData) => request.post(baseUrl, gameData);
+export const create = (transactionData) => request.post(baseUrl, transactionData);
 
-export const edit = (gameId, gameData) => request.put(`${baseUrl}/${gameId}`, gameData);
+export const edit = (id, transactionData) => request.put(`${baseUrl}/${id}`, transactionData);
 
-export const remove = (gameId) => request.del(`${baseUrl}/${gameId}`);
+export const remove = (id) => request.del(`${baseUrl}/${id}`);
