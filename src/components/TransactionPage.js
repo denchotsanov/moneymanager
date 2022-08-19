@@ -10,7 +10,6 @@ import {useEffect, useState} from "react";
 export const TransactionPage = () => {
     const [transactions, setTransactions] = useState({});
     const columns = [
-        { field: '_Id', headerName: 'ID', width: 90 },
         {
             field: 'date',
             headerName: 'Date',
@@ -28,14 +27,12 @@ export const TransactionPage = () => {
             headerName: 'Income',
             type: 'number',
             width: 110,
-            editable: true,
         },
         {
             field: 'outcome',
             headerName: 'Outcome',
             type: 'number',
             width: 110,
-            editable: true,
         }
     ];
     const actions = [
@@ -44,7 +41,10 @@ export const TransactionPage = () => {
 
     useEffect(() => {
         transactionsService.getAll()
-            .then(transactions => setTransactions(transactions));
+            .then((transactions) => {
+                transactions = Object.values(transactions);
+                return setTransactions(transactions);
+            });
     }, []);
     return (
         <>

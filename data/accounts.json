@@ -1,8 +1,8 @@
 [
     {
-                "_Id": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "id": "1",
                 "description": "CoverFire",
-                "income": "Action",
+                "income": "0",
                 "outcome": "70",
                 "date":"2022-08-08 12:12:00"
             }
