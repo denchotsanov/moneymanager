@@ -45,14 +45,16 @@ export const CurrencyPage = () => {
     useEffect(() => {
         currencyService.getAll()
             .then(data => setRows(Object.values(data)));
-        exchangeService.getLatest('BGN','EUR,USD').then(data=> {
+
+        exchangeService.getLatest('BGN' ,
+            Array.prototype.map.call(rows, function(item) { return item.isMain? false :item.attr; }).join(",")).then(data=> {
             let result = Object.keys(data.rates).map((key) => { return {"currency_label": '1 BGN' , "currency_rate": data.rates[key] + ' ' + key  } });
             return setExgRows(result);
         }).catch((e)=> setAlert(e.message))
     }, []);
     return (
         <section className={ styles.app__currency_page}>
-            {alert ? <FlashMessage title={alert} type='error' onClose={onCloseFlash} />:'' }
+            { alert ? <FlashMessage title={alert} type='error' onClose={onCloseFlash} />:'' }
             <Container>
                 <h2>Currencies</h2>
                 <div className={styles.app__currency_table}>
