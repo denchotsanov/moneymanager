@@ -5,6 +5,7 @@ import { SpeedDial, SpeedDialAction} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import * as transactionsService from "../services/transactionService";
 import {useEffect, useState} from "react";
+import {AddButton} from "./common/AddButton";
 
 
 export const TransactionPage = () => {
@@ -20,6 +21,12 @@ export const TransactionPage = () => {
             field: 'description',
             headerName: 'Description',
             width: 500,
+            editable: true,
+        },
+        {
+            field: 'accountid',
+            headerName: 'Account',
+            width: 300,
             editable: true,
         },
         {
@@ -49,21 +56,13 @@ export const TransactionPage = () => {
     return (
         <>
             <Box sx={{ height: 700, width: '100%', paddingBottom:25}}>
-                <DataGrid columns={columns} rows={transactions} />
+                <DataGrid
+                    columns={columns}
+                    rows={transactions}
+                    disableSelectionOnClick
+                />
             </Box>
-            <SpeedDial
-                ariaLabel="SpeedDial"
-                sx={{ position: 'absolute', bottom: 16, right: 16 }}
-                icon={<SpeedDialIcon />}
-            >
-                {actions.map((action) => (
-                    <SpeedDialAction
-                        key={action.name}
-                        icon={action.icon}
-                        tooltipTitle={action.name}
-                    />
-                ))}
-            </SpeedDial>
+            <AddButton lists={actions}/>
         </>
     );
 }

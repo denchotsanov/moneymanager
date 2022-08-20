@@ -1,0 +1,29 @@
+.app__currency_page {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    height: 100vh;
+}
+.app__currency_page h4 {
+    text-align: center;
+    color: gray;
+    width: 100%;
+    margin: 0px;
+}
+.app__currency_table {
+    display: flex;
+    width: 48%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: left;
+    padding-left: 10px;
+}
+
+.app_exchange_table {
+    display: flex;
+    height: auto;
+    width: 48%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: right;
+}

@@ -1,0 +1,45 @@
+.data_table_wrapper {
+    position: relative;
+    height: auto;
+    overflow:auto;
+    background: white;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.data_table {
+    width: 100%;
+}
+.data_table thead {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    background: white;
+    z-index: 1;
+}
+.data_table thead tr {
+    background-color: #1976d2;
+    color: white;
+}
+.data_table th {
+    padding: 8px;
+}
+
+.data_table th:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.no_data {
+    text-align: center;
+    padding: 10px;
+    color: gray;
+    font-style: italic;
+}
+.main_row{
+    background-color: lightgreen;
+}
+.odd{
+}
+.even {
+    background-color: aliceblue;
+}
