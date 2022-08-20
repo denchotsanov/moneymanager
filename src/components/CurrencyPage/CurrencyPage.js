@@ -12,6 +12,7 @@ export const CurrencyPage = () => {
     const [rows, setRows] = useState([]);
     const [alert,setAlert] = useState(false);
     const [exgRows,setExgRows] = useState([]);
+
     const columns = [
         {
             "field":"id",
@@ -38,18 +39,20 @@ export const CurrencyPage = () => {
             "headerTitle":"Rate"
         }
     ]
+
     const onDelButton = ()=>{}
     const onEditButton = ()=>{}
-    const onAddButton = ()=>{
-        console.log('dd');
+    const onAddButton = () => {
         return setAlert('test');
     }
     const onCloseFlash = () => {
         setAlert(false);
     }
+
     const addMenuList = [
-        { icon: <AddIcon />, name: 'New currency', onClickAction: {onAddButton} },
+        { icon: <AddIcon />, name: 'New currency', onAction:onAddButton },
     ];
+
     useEffect(() => {
         currencyService.getAll()
             .then(data => setRows(Object.values(data)));
