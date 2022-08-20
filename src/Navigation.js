@@ -10,6 +10,7 @@ import {AuthProvider} from './contexts/AuthContext';
 import App from "./App";
 import {Logout} from "./login/Logout";
 import {PrivateRoute} from "./components/PrivateRoute";
+import {CurrencyPage} from "./components/CurrencyPage/CurrencyPage";
 
 export const Navigation = () => {
 
@@ -26,6 +27,7 @@ export const Navigation = () => {
                     <Route index element={<Dashboard />}/>
                     <Route path="/transaction" element={<TransactionPage />}/>
                     <Route path="/accounts" element={<AccountsPage />}/>
+                    <Route path="/currency" element={<CurrencyPage />}/>
                 </Route>
             </Routes>
         </AuthProvider>

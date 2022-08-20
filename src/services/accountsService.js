@@ -5,8 +5,8 @@ export const getAll = () => request.get(baseUrl);
 
 export const getOne = (id) => request.get(`${baseUrl}/${id}`);
 
-export const create = (accountData) => request.post(baseUrl, accountData);
+export const create = (data) => request.post(baseUrl, data);
 
-export const edit = (id, accountData) => request.put(`${baseUrl}/${id}`, accountData);
+export const edit = (id, data) => request.put(`${baseUrl}/${id}`, data);
 
 export const remove = (id) => request.del(`${baseUrl}/${id}`);
