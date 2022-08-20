@@ -55,8 +55,8 @@ export const DataTableItem = ({
                     </td>
                 );
             })}
-            { onEditButton ? <td width="15"><EditIcon color="primary"/></td> : '' }
-            { onDelButton ? <td width="15"><DeleteIcon color="error"/></td> : '' }
+            { onEditButton ? <td width="15"><EditIcon color="primary" onClick={ onEditButton(item.id ? item.id: item._id) } /></td> : '' }
+            { onDelButton ? <td width="15"><DeleteIcon color="error" onClick={ onDelButton(item.id ? item.id: item._id) }/></td> : '' }
         </>
     );
 }
