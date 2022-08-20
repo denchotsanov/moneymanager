@@ -1,6 +1,6 @@
 import {Route, Routes} from "react-router-dom";
 import {Dashboard} from "./components/Dashboard"
-import {AccountsPage} from "./components/AccountsPage";
+import {AccountsPage} from "./components/AccountsPage/AccountsPage";
 import {LoginPage} from "./login/LoginPage";
 import {RegisterPage} from "./login/RegisterPage";
 import {TransactionPage} from "./components/TransactionPage";

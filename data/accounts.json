@@ -1,9 +1,8 @@
 [
     {
-                "id": "1",
-                "description": "CoverFire",
-                "income": "0",
-                "outcome": "70",
+                "_id": "1",
+                "name": "cash",
+                "balance": "0",
                 "date":"2022-08-08 12:12:00"
             }
 ]

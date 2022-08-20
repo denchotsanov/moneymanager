@@ -1,0 +1,18 @@
+.app__account_page {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: column;
+    height: 100vh;
+}
+.app__account_page h4 {
+    text-align: center;
+    color: gray;
+    width: 100%;
+    margin: 0px;
+}
+.app__account_table {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    float: left;
+}

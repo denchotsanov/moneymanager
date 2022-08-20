@@ -54,7 +54,7 @@ export const CurrencyPage = () => {
     }
 
     const closeHandler = () => {
-        return setDataAction({data: null,action: null });
+        return setDataAction({data: null, action: null });
     }
     const dataCreateHandler = (e) => {
         e.preventDefault();
@@ -64,11 +64,11 @@ export const CurrencyPage = () => {
             abbr
         } = Object.fromEntries(formData);
 
-        const data = {
+        const dataF = {
             name,
             abbr
         };
-        currencyService.create(data)
+        currencyService.create(dataF)
             .then(row => {
                 setRows(oldRows => [...oldRows, row]);
                 closeHandler();
@@ -76,9 +76,10 @@ export const CurrencyPage = () => {
     }
     const dataActionClickHandler = (id, actionType) => {
         currencyService.getOne(id)
-            .then(data => {
+            .then(dataJ => {
+
                 setDataAction({
-                    data: data,
+                    data:dataJ,
                     action: actionType
                 });
             });
@@ -88,7 +89,6 @@ export const CurrencyPage = () => {
     ];
 
     useEffect(() => {
-        console.log(dataAction);
         currencyService.getAll()
             .then(data => setRows(Object.values(data)));
     }, []);
@@ -114,12 +114,12 @@ export const CurrencyPage = () => {
                 <EditCurrency
                     user={dataAction.data}
                     onClose={closeHandler}
-                    open={dataAction.action === 'edit'} /> :<></> }
+                    open={true} /> :<></> }
             {dataAction.action === "delete" ?
                 <DeleteCurrency
                     onClose={closeHandler}
                     user={dataAction.data}
-                    open={dataAction.action === 'delete'} /> :<></> }
+                    open={true} /> :<></> }
             <Container>
                 <h2>Currencies</h2>
                 <div className={styles.app__currency_table}>
