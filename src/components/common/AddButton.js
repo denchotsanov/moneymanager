@@ -9,6 +9,7 @@ export const AddButton = ({ lists }) => {
     >
         {lists.length > 0 ? lists.map((action) => (
             <SpeedDialAction
+                onClick={action.onClickAction}
                 key={action.name}
                 icon={action.icon}
                 tooltipTitle={action.name}

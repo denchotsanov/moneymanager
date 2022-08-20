@@ -6,6 +6,7 @@ import * as currencyService from "../../services/currencyService";
 import * as exchangeService from "../../services/exchangeService";
 import {AddButton} from "../common/AddButton";
 import {FlashMessage} from "../common/FlashMessage";
+import AddIcon from "@mui/icons-material/Add";
 
 export const CurrencyPage = () => {
     const [rows, setRows] = useState([]);
@@ -39,19 +40,30 @@ export const CurrencyPage = () => {
     ]
     const onDelButton = ()=>{}
     const onEditButton = ()=>{}
+    const onAddButton = ()=>{
+        console.log('dd');
+        return setAlert('test');
+    }
     const onCloseFlash = () => {
         setAlert(false);
     }
+    const addMenuList = [
+        { icon: <AddIcon />, name: 'New currency', onClickAction: {onAddButton} },
+    ];
     useEffect(() => {
         currencyService.getAll()
             .then(data => setRows(Object.values(data)));
-
-        exchangeService.getLatest('BGN' ,
-            Array.prototype.map.call(rows, function(item) { return item.isMain? false :item.attr; }).join(",")).then(data=> {
-            let result = Object.keys(data.rates).map((key) => { return {"currency_label": '1 BGN' , "currency_rate": data.rates[key] + ' ' + key  } });
-            return setExgRows(result);
-        }).catch((e)=> setAlert(e.message))
     }, []);
+
+    useEffect(()=>{
+        if(rows.length >0 ){
+            exchangeService.getLatest('BGN' ,
+                Array.prototype.map.call(rows, function(item) { return !item.isMain ? item.attr: null; }).join(",")).then(data=> {
+                let result = Object.keys(data.rates).map((key) => { return {"currency_label": '1 BGN' , "currency_rate": data.rates[key] + ' ' + key  } });
+                return setExgRows(result);
+            }).catch((e)=> setAlert(e.message))
+        }
+    },[rows])
     return (
         <section className={ styles.app__currency_page}>
             { alert ? <FlashMessage title={alert} type='error' onClose={onCloseFlash} />:'' }
@@ -70,7 +82,7 @@ export const CurrencyPage = () => {
                     <h4>Exchange rates</h4>
                     <DataTable columns={exgCols} rows={exgRows}/>
                 </div>
-                <AddButton/>
+                <AddButton lists={addMenuList}/>
             </Container>
         </section>
     );

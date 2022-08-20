@@ -1,7 +1,5 @@
 const requestExt = async (method, url, data) => {
     try {
-        const user = localStorage.getItem('auth');
-        const auth = JSON.parse(user || '{}');
 
         let headers = {
             "apikey":"2ItNLQ1X8QEJ7oQg06wD6S8HGCnnN2qE"

@@ -28,7 +28,7 @@ export const DataTable = ({
 
                     { rows.length > 0 ? rows.map((item,idx) => {
                        return (
-                           <tr key={item.id} className={ item.isMain ? styles.main_row : idx %2 ? styles.even : styles.odd }>
+                           <tr key={item.id? item.id : idx} className={ item.isMain ? styles.main_row : idx %2 ? styles.even : styles.odd }>
                                <DataTableItem item={item} cols={columns} onEditButton={onEditButton} onDelButton={onDelButton}/>
                            </tr>
                        );
